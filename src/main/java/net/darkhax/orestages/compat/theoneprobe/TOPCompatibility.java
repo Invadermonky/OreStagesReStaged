@@ -28,12 +28,7 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void> {
 
         public ProbeHitDataWrapper(IProbeHitData data, IBlockState state, World world, EntityPlayer player) {
             this.data = data;
-            pickBlock = state.getBlock().getPickBlock(state,
-                    new RayTraceResult(data.getHitVec(), data.getSideHit(), data.getPos()),
-                    world,
-                    data.getPos(),
-                    player
-            );
+            pickBlock = state.getBlock().getPickBlock(state, new RayTraceResult(data.getHitVec(), data.getSideHit(), data.getPos()), world, data.getPos(), player);
         }
 
         @Override
@@ -62,25 +57,30 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void> {
     }
 
     @Override
-    public Void apply(ITheOneProbe theOneProbe) {
-        theOneProbe.registerBlockDisplayOverride((mode, probeInfo, player, world, blockState, data) -> {
-            Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(blockState);
-            if (stageInfo != null && !GameStageHelper.clientHasStage(PlayerUtils.getClientPlayer(), stageInfo.getFirst())) {
-                IBlockState stageBlockState = stageInfo.getSecond();
-                DefaultProbeInfoProvider.showStandardBlockInfo(
-                        Config.getRealConfig(),
-                        mode,
-                        probeInfo,
-                        stageBlockState,
-                        stageBlockState.getBlock(),
-                        world,
-                        data.getPos(),
-                        player,
-                        new ProbeHitDataWrapper(data, stageBlockState, world, player)
-                );
-                return true;
+    public Void apply(ITheOneProbe input) {
+        input.registerBlockDisplayOverride((mode, probeInfo, player, world, state, data) -> {
+            IBlockState checkState = state;
+            Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(checkState);
+            while (stageInfo != null) {
+                if (GameStageHelper.hasStage(player, stageInfo.getFirst())) {
+                    break;
+                } else {
+                    checkState = stageInfo.getSecond();
+                    stageInfo = OreTiersAPI.getStageInfo(checkState);
+                }
             }
-            return false;
+            DefaultProbeInfoProvider.showStandardBlockInfo(
+                    Config.getRealConfig(),
+                    mode,
+                    probeInfo,
+                    checkState,
+                    checkState.getBlock(),
+                    world,
+                    data.getPos(),
+                    player,
+                    new ProbeHitDataWrapper(data, checkState, world, player)
+            );
+            return true;
         });
         return null;
     }
