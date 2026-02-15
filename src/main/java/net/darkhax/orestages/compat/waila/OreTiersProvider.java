@@ -27,10 +27,18 @@ public class OreTiersProvider implements IWailaPlugin, IWailaDataProvider {
     
     @Override
     public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        final Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(accessor.getBlockState());
-
-        if (stageInfo != null && !GameStageHelper.clientHasStage(PlayerUtils.getClientPlayer(), stageInfo.getFirst())) {
-            return StackUtils.getStackFromState(stageInfo.getSecond(), 1);
+        IBlockState checkState = accessor.getBlockState();
+        Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(checkState);
+        while (stageInfo != null) {
+            if (GameStageHelper.hasStage(accessor.getPlayer(), stageInfo.getFirst())) {
+                break;
+            } else {
+                checkState = stageInfo.getSecond();
+                stageInfo = OreTiersAPI.getStageInfo(checkState);
+            }
+        }
+        if(checkState != accessor.getBlockState()) {
+            return checkState.getBlock().getPickBlock(checkState, accessor.getMOP(), accessor.getWorld(), accessor.getPosition(), accessor.getPlayer());
         }
         return accessor.getStack();
     }
