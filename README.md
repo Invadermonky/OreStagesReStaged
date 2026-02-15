@@ -1,21 +1,67 @@
-## TemplateDevEnv
-_For Kotlin see [TemplateDevEnvKt](https://github.com/CleanroomMC/TemplateDevEnvKt)_
+# Ore Stages: ReStaged
+Ore Stages: ReStaged is a continuation of [Ore Stages](https://www.curseforge.com/minecraft/mc-mods/ore-stages) created to fix a few bugs.
 
-Template workspace for modding Minecraft 1.12.2. Licensed under MIT, it is made for public use.
+**Changes:**
+- Fixed VintageFix dynamic resources incompatibility
+- Fixed and improved The One Probe compatibility
+- Fixed and improved WAILA compatibility
 
-This template runs on **Java 25**, **Gradle 9.2.1** + **[RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle) 2.0.2** + **Forge 14.23.5.2847**.
+---
+<b><u>Original Description:</b></u>
 
-With **coremod and mixin support** that is easy to configure.
+# Ore Stages [![](http://cf.way2muchnoise.eu/290201.svg)](https://minecraft.curseforge.com/projects/290201) [![](http://cf.way2muchnoise.eu/versions/290201.svg)](https://minecraft.curseforge.com/projects/290201)
 
-### Instructions:
+This mod is an addon for the GameStage API. It allows for blocks in the world, like ores, to be put into game stages. You should check out the GameStage API mod's description for more info. To give a brief run down, stages are parts of the progression system set up by the modpack or server. Stages are given to players through a command, which is typically ran by a questing mod, advancement, or even a Command Block.
 
-1. Click `use this template` at the top.
-2. Clone the repository that you have created with this template to your local machine.
-3. Make sure IDEA is using Java 25 for Gradle before you sync the project. Verify this by going to IDEA's `Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM`.
-4. Open the project folder in IDEA. When prompted, click "Load Gradle Project" as it detects the `build.gradle`, if you weren't prompted, right-click the project's `build.gradle` in IDEA, select `Link Gradle Project`, after completion, hit `Refresh All` in the gradle tab on the right.
-5. Run gradle tasks such as `runClient` and `runServer` in the IDEA gradle tab, or use the auto-imported run configurations like `1. Run Client`.
+[![Nodecraft](https://i.imgur.com/sz9PUmK.png)](https://nodecraft.com/r/darkhax)    
+This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
 
-### Notes:
-- Dependencies script in [gradle/scripts/dependencies.gradle](gradle/scripts/dependencies.gradle), explanations are commented in the file.
-- Publishing script in [gradle/scripts/publishing.gradle](gradle/scripts/publishing.gradle).
-- When writing Mixins on IntelliJ, it is advisable to use latest [MinecraftDev Fork for RetroFuturaGradle](https://github.com/eigenraven/MinecraftDev/releases).
+## Setup
+This mod uses CraftTweaker for configuration.
+
+## What happens when staged?
+If a player does not have the right stage for the block
+- The block will look like the block it is hidden as.
+- The player will not be able to right click the block.
+- The block will drop the items it's replacement would drop.
+- The block will take as long to mine as it's replacement.
+
+In situations where no player is present, it will be assumed that there is no stage. This is referred to as defaulting behavior.
+
+## CraftTweaker methods
+
+This method can be used to replace a block with vanilla stone.
+```
+mods.orestages.OreStages.addReplacement(String stage, IIngredient original);
+```
+
+This method can be used to replace a block with another block.
+```
+mods.orestages.OreStages.addReplacement(String stage, IIngredient original, IItemStack replacement);
+```
+
+This method can be used to replace a block with another block by specifying exact block ids. The above two methods only work for blocks with items.
+```
+mods.orestages.OreStages.addReplacementById(String stage, String original, String replacement);
+```
+
+The following methods are used to add a replacement which do not use the defaulting behavior. Meaning if no player broke the block (water, explosion, machine) the block will break as if it was not hidden.
+
+```
+mods.orestages.OreStages.addNonDefaultingReplacement(String stage, IIngredient original);
+
+mods.orestages.OreStages.addNonDefaultingReplacement(String stage, IIngredient original, IItemStack replacement);
+
+mods.orestages.OreStages.addNonDefaultingReplacementById(String stage, String original, String replacement);
+```
+
+## Example Script
+```
+mods.orestages.OreStages.addReplacementById("one", "minecraft:potatoes:*", "minecraft:tallgrass:2");
+mods.orestages.OreStages.addReplacementById("two", "minecraft:wheat:*", "minecraft:carrots:3");
+mods.orestages.OreStages.addReplacementById("three", "minecraft:nether_wart:*", "minecraft:beetroots");
+mods.orestages.OreStages.addReplacement("four", <minecraft:dirt>, <minecraft:stone>);
+mods.orestages.OreStages.addReplacement("one", <minecraft:obsidian>, <minecraft:cobblestone>);
+mods.orestages.OreStages.addNonDefaultingReplacement("one", <minecraft:torch:*>, <minecraft:redstone_torch>);
+mods.orestages.OreStages.addReplacement("five", <minecraft:furnace:*>, <minecraft:stone>);
+```
