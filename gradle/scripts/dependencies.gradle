@@ -38,10 +38,12 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.20.695"
     implementation "CraftTweaker2:ZenScript:4.1.20.695"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
+    implementation "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 
     implementation rfg.deobf('curse.maven:had-enough-items-557549:7282920')
     implementation rfg.deobf("curse.maven:bookshelf-228525:2836960")
     implementation rfg.deobf("curse.maven:game-stages-268655:2951840")
+    implementation rfg.deobf("curse.maven:hwyla-253449:2568751")
 
     implementation rfg.deobf("curse.maven:vintagefix-871198:6609247")
 

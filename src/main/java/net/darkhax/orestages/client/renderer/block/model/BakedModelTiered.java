@@ -2,15 +2,16 @@ package net.darkhax.orestages.client.renderer.block.model;
 
 import java.util.List;
 
-import net.darkhax.bookshelf.util.PlayerUtils;
 import net.darkhax.bookshelf.util.RenderUtils;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 
 /**
@@ -40,7 +41,8 @@ public class BakedModelTiered implements IBakedModel {
      * @return The correct model to use.
      */
     private IBakedModel getCorrectModel() {
-        return PlayerUtils.getClientPlayer() != null && GameStageHelper.clientHasStage(PlayerUtils.getClientPlayer(), this.stage) ? this.originalModel : this.replacementModel;
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        return player != null && GameStageHelper.hasStage(player, this.stage) ? this.originalModel : this.replacementModel;
     }
     
     public IBakedModel getOriginal() {

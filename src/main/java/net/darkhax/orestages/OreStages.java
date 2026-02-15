@@ -3,10 +3,10 @@ package net.darkhax.orestages;
 import java.util.Map.Entry;
 
 import net.darkhax.bookshelf.lib.LoggingHelper;
-import net.darkhax.bookshelf.util.RenderUtils;
 import net.darkhax.orestages.api.OreTiersAPI;
 import net.darkhax.orestages.client.renderer.block.model.BakedModelTiered;
 import net.darkhax.orestages.compat.theoneprobe.TOPCompatibility;
+import net.darkhax.orestages.utils.RenderUtilsOS;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IReloadableResourceManager;
@@ -33,7 +33,8 @@ public class OreStages {
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:bookshelf" +
             ";required-after:gamestages@[2.0.89,)" +
-            ";required-after:crafttweaker";
+            ";required-after:crafttweaker" +
+            ";after:vintagefix";
     
     public static final LoggingHelper LOG = new LoggingHelper("Ore Stages");
     
@@ -58,7 +59,7 @@ public class OreStages {
         final long time = System.currentTimeMillis();
         if (!OreTiersAPI.STATE_MAP.isEmpty()) {
             for (final Entry<IBlockState, Tuple<String, IBlockState>> entry : OreTiersAPI.STATE_MAP.entrySet()) {
-                RenderUtils.setModelForState(entry.getKey(), new BakedModelTiered(entry.getValue().getFirst(), entry.getKey(), entry.getValue().getSecond()));
+                RenderUtilsOS.setModelForState(entry.getKey(), new BakedModelTiered(entry.getValue().getFirst(), entry.getKey(), entry.getValue().getSecond()));
             }
         } else {
             LOG.info("There are no block replacements. Has the mod been configured?");
