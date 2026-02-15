@@ -1,7 +1,5 @@
 package net.darkhax.orestages;
 
-import java.util.Map.Entry;
-
 import net.darkhax.bookshelf.lib.LoggingHelper;
 import net.darkhax.orestages.api.OreTiersAPI;
 import net.darkhax.orestages.client.renderer.block.model.BakedModelTiered;
@@ -19,6 +17,8 @@ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Map.Entry;
 
 @Mod(
         modid = OreStages.MOD_ID,

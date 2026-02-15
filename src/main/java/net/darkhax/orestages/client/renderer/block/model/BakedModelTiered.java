@@ -1,7 +1,5 @@
 package net.darkhax.orestages.client.renderer.block.model;
 
-import java.util.List;
-
 import net.darkhax.bookshelf.util.RenderUtils;
 import net.darkhax.gamestages.GameStageHelper;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +11,8 @@ import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
+
+import java.util.List;
 
 /**
  * This model is used to wrap existing/vanilla models with stage aware models.

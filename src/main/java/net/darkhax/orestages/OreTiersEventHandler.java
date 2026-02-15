@@ -1,7 +1,5 @@
 package net.darkhax.orestages;
 
-import java.util.ListIterator;
-
 import net.darkhax.bookshelf.util.BlockUtils;
 import net.darkhax.bookshelf.util.RenderUtils;
 import net.darkhax.gamestages.GameStageHelper;
@@ -25,6 +23,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ListIterator;
 
 public class OreTiersEventHandler {
     

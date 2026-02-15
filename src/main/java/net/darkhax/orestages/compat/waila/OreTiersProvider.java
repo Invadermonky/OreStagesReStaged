@@ -1,15 +1,6 @@
 package net.darkhax.orestages.compat.waila;
 
-import java.util.List;
-
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-import mcp.mobius.waila.api.IWailaPlugin;
-import mcp.mobius.waila.api.IWailaRegistrar;
-import mcp.mobius.waila.api.WailaPlugin;
-import net.darkhax.bookshelf.util.PlayerUtils;
-import net.darkhax.bookshelf.util.StackUtils;
+import mcp.mobius.waila.api.*;
 import net.darkhax.gamestages.GameStageHelper;
 import net.darkhax.orestages.api.OreTiersAPI;
 import net.minecraft.block.Block;
@@ -21,6 +12,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 @WailaPlugin
 public class OreTiersProvider implements IWailaPlugin, IWailaDataProvider {
