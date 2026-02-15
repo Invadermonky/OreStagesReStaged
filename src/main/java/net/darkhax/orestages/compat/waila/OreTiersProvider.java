@@ -26,45 +26,37 @@ import net.minecraft.world.World;
 public class OreTiersProvider implements IWailaPlugin, IWailaDataProvider {
     
     @Override
-    public ItemStack getWailaStack (IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
         final Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(accessor.getBlockState());
 
         if (stageInfo != null && !GameStageHelper.clientHasStage(PlayerUtils.getClientPlayer(), stageInfo.getFirst())) {
-
             return StackUtils.getStackFromState(stageInfo.getSecond(), 1);
         }
-        
         return accessor.getStack();
     }
     
     @Override
-    public List<String> getWailaHead (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         return currenttip;
     }
     
     @Override
-    public List<String> getWailaBody (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         return currenttip;
     }
     
     @Override
-    public List<String> getWailaTail (ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        
+    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         return currenttip;
     }
     
     @Override
-    public NBTTagCompound getNBTData (EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
-        
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, BlockPos pos) {
         return tag;
     }
     
     @Override
-    public void register (IWailaRegistrar registrar) {
-        
+    public void register(IWailaRegistrar registrar) {
         registrar.registerStackProvider(this, Block.class);
     }
 }
