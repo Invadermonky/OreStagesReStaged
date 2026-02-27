@@ -33,7 +33,6 @@ public class OreStages {
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:bookshelf" +
             ";required-after:gamestages@[2.0.89,)" +
-            ";required-after:crafttweaker" +
             ";after:vintagefix";
     
     public static final LoggingHelper LOG = new LoggingHelper("Ore Stages");
