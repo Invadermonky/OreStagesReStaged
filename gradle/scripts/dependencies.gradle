@@ -35,9 +35,10 @@ dependencies {
     runtimeOnly 'com.cleanroommc:osxnarratorblocker:1.0'
     compileOnly 'org.jetbrains:annotations:24.1.0'
 
-    implementation "CraftTweaker2:CraftTweaker2-API:4.1.20.695"
-    implementation "CraftTweaker2:ZenScript:4.1.20.695"
-    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
+    compileOnly "CraftTweaker2:CraftTweaker2-API:4.1.20.695"
+    compileOnly "CraftTweaker2:ZenScript:4.1.20.695"
+    compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
+    implementation("com.cleanroommc:groovyscript:1.2.2") { transitive = false }
     implementation "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 
     implementation rfg.deobf('curse.maven:had-enough-items-557549:7282920')
@@ -45,7 +46,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:game-stages-268655:2951840")
     implementation rfg.deobf("curse.maven:hwyla-253449:2568751")
 
-    implementation rfg.deobf("curse.maven:vintagefix-871198:6609247")
+    compileOnly rfg.deobf("curse.maven:vintagefix-871198:6609247")
 
     //implementation "mcp.mobius.waila:Hwyla:${version_hwyla}"
     //implementation "mcjty.theoneprobe:TheOneProbe-1.12:1.12-${version_top}"

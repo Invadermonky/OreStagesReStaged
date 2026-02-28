@@ -2,6 +2,8 @@
 Ore Stages: ReStaged is a continuation of [Ore Stages](https://www.curseforge.com/minecraft/mc-mods/ore-stages) created to fix a few bugs.
 
 **Changes:**
+- Added GroovyScript support
+- Removed CraftTweaker required dependency
 - Fixed VintageFix dynamic resources incompatibility
 - Fixed and improved The One Probe compatibility
 - Fixed and improved WAILA compatibility

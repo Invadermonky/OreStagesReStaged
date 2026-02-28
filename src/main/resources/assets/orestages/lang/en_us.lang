@@ -1,0 +1,7 @@
+# GroovyScript
+groovyscript.wiki.orestages.ore_stages.title=Ore Staging
+groovyscript.wiki.orestages.ore_stages.description=Adds blocks that will appear as other blocks unless players meet the required game stage. `isDefaulting` determines whether the block will drop its unstaged block drops when broken by non-player methods, such as water breaking tall grass or flowers.
+groovyscript.wiki.orestages.ore_stages.addReplacement.0=Adds a staged block that will appear as stone in the format: `stageName`, `originalBlock`, `isDefaulting`
+groovyscript.wiki.orestages.ore_stages.addReplacement.1=Adds a staged block that will appear as stone in the format: `stageName`, `originalState`, `isDefaulting`
+groovyscript.wiki.orestages.ore_stages.addReplacement.2=Adds a staged block that will appear as stone in the format: `stageName`, `originalBlock`, `replacementBlock`, `isDefaulting`
+groovyscript.wiki.orestages.ore_stages.addReplacement.3=Adds a staged block that will appear as stone in the format: `stageName`, `originalState`, `replacementState`, `isDefaulting`
