@@ -19,7 +19,7 @@ This mod is an addon for the GameStage API. It allows for blocks in the world, l
 This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
 
 ## Setup
-This mod uses CraftTweaker for configuration.
+This mod uses CraftTweaker or GroovyScript for configuration.
 
 ## What happens when staged?
 If a player does not have the right stage for the block
