@@ -9,9 +9,9 @@ Ore Stages: ReStaged is a continuation of [Ore Stages](https://www.curseforge.co
 - Fixed and improved WAILA compatibility
 
 ---
-<b><u>Original Description:</b></u>
+# <b><u>Original Description:</b></u>
 
-# Ore Stages [![](http://cf.way2muchnoise.eu/290201.svg)](https://minecraft.curseforge.com/projects/290201) [![](http://cf.way2muchnoise.eu/versions/290201.svg)](https://minecraft.curseforge.com/projects/290201)
+[![](http://cf.way2muchnoise.eu/290201.svg)](https://www.curseforge.com/minecraft/mc-mods/ore-stages) [![](http://cf.way2muchnoise.eu/versions/290201.svg)](https://minecraft.curseforge.com/projects/290201)
 
 This mod is an addon for the GameStage API. It allows for blocks in the world, like ores, to be put into game stages. You should check out the GameStage API mod's description for more info. To give a brief run down, stages are parts of the progression system set up by the modpack or server. Stages are given to players through a command, which is typically ran by a questing mod, advancement, or even a Command Block.
 
